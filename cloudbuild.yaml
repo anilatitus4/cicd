@@ -11,3 +11,6 @@ steps:
 
 images:
   - 'us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
