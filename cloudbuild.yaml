@@ -16,7 +16,7 @@ steps:
       - releases
       - create
       - release-$BUILD_ID
-      - --delivery-pipeline=flask-cicd-pipeline
+      - --delivery-pipeline=cicd-pipeline
       - --region=us-central1
       - --images=flask-app=us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:$SHORT_SHA
 
