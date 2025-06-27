@@ -1,0 +1,16 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: cicd-pipeline
+description: CI/CD Pipeline for Flask app
+serialPipeline:
+  stages:
+    - targetId: dev
+      profiles: []
+    - targetId: staging
+      profiles: []
+    - targetId: production
+      profiles: []
+      strategy:
+        standard:
+          verify: false
