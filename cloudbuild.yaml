@@ -1,7 +1,7 @@
 steps:
   - name: 'python'
     entrypoint: 'bash'
-    args: ['-c', 'pip install -r requirements.txt && pip install pytest flake8 && flake8 app.py']
+    args: ['-c', 'pip install -r requirements.txt && pip install flake8 && flake8 app.py']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:$SHORT_SHA', '.']
