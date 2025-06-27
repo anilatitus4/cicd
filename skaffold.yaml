@@ -9,6 +9,7 @@ build:
       docker:
         dockerfile: Dockerfile
 deploy:
-  googleCloudDeploy:
-    deliveryPipeline: cicd-pipeline
-    target: dev
+  cloudrun:
+    projectId: cicd-234
+    region: us-central1
+    service: flask-app
