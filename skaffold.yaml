@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: flask-app
+build:
+  artifacts:
+    - image: us-central1-docker.pkg.dev/cicd-234/cicd/flask-app
+      context: .
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  googleCloudDeploy:
+    deliveryPipeline: cicd-pipeline
+    target: dev
