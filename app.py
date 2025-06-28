@@ -1,11 +1,15 @@
 import os
+import logging
 from flask import Flask
 
 app = Flask(__name__)
 
+logging.basicConfig(level=logging.INFO)
 
 @app.route("/")
 def home():
+    app.logger.info("Home endpoint hit!")
+    raise Exception("This is a test error for Error Reporting!")
     return "Hello World - CI/CD Test Deployment!"
 
 
