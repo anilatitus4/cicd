@@ -13,4 +13,5 @@ serialPipeline:
       profiles: []
       strategy:
         standard:
-          verify: false
+          predeploy:
+            approval: true
