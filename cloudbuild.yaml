@@ -1,20 +1,29 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/cicd-234/ci-cd-repo/flask-app:latest', '.']
+    args: [
+      'build',
+      '-t',
+      'us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:$SHORT_SHA',
+      '.'
+    ]
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:latest']
+    args: [
+      'push',
+      'us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:$SHORT_SHA'
+    ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    args:
-      - deploy
-      - releases
-      - create
-      - release-$BUILD_ID
-      - --delivery-pipeline=cicd-pipeline
-      - --region=us-central1
-      - --images=flask-app=us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:latest
+    args: [
+      'deploy',
+      'releases',
+      'create',
+      'release-$BUILD_ID',
+      '--delivery-pipeline=cicd-pipeline',
+      '--region=us-central1',
+      '--images=flask-app=us-central1-docker.pkg.dev/cicd-234/cicd/flask-app:$SHORT_SHA'
+    ]
 
 options:
   logging: CLOUD_LOGGING_ONLY
